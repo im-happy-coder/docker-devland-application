@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jndi.jti.board.mapper.oracle.TxOracleMapper">
+	<select id="oracleRead" resultType="TxOracleParam" parameterType="Integer">
+	    select * from board_tb where useid = 1
+	</select>
+
+    <update id="oracleUpdate" parameterType="TxOracleParam">
+        update board_tb set uname = #{uname} where useid = 1
+    </update>
+</mapper>
+
+
+

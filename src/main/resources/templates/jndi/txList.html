@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <meta charset="UTF-8" />
+    <title>jndi</title>
+</head>
+<body>
+<div class="container">
+    <h3 style="color: chartreuse">MYSQL DB</h3>
+    <p th:inline="text">bid : [[${mysqlRead.bid}]]</p>
+    <p th:inline="text">title : [[${mysqlRead.title}]]</p>
+    <p th:inline="text" id="content">content : [[${mysqlRead.content}]]</p>
+    <p th:inline="text">writer : [[${mysqlRead.writer}]]</p>
+    <p th:inline="text">writeDate : [[${mysqlRead.writeDate}]]</p>
+    <hr/>
+    <h3 style="color: blue">ORACLE DB</h3>
+    <p th:inline="text">useid : [[${oracleRead.useid}]]</p>
+    <p th:inline="text" id="uname">uname : [[${oracleRead.uname}]]</p>
+    <p th:inline="text">country : [[${oracleRead.country}]]</p>
+    <p th:inline="text">address : [[${oracleRead.address}]]</p>
+    <p th:inline="text">writeDate : [[${oracleRead.writeDate}]]</p>
+
+    <button id="updateBtn" class="btn btn-info btn-sm">수정</button>
+    <form id="form" th:action="@{/}" method="post">
+    </form>
+</div>
+<hr/>
+<br/>
+<span style="font-size: 30px">Instance :</span><span style="color: blue; font-size: 25px" th:text="${inetAddress}"></span>
+<hr/>
+<br/>
+Session ID : <span th:text="${sessionId}"></span><br/>
+It is New Session? : <span th:text="${sessionisNew}"></span><br/>
+Session Create Date : <span th:text="${sessionCreateTime}"></span><br/>
+Session Last Date : <span th:text="${sessionLastTime}"></span><br/>
+
+<script th:src="@{/webjars/jquery/3.0.0/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/1.12.9-1/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/4.0.0-2/css/bootstarp.min.css}"></script>
+<script th:inline="javascript">
+    $(document).ready(function () {
+        var form= $("#form");
+        $(document).on('click','#updateBtn',function (e) {
+            var str="<input class='form-control' width='250'" +
+                "placeholder='content 입력 :' id='updateContent'/>";
+            $("#content").html(str);
+            str="<input class='form-control' width='250'" +
+                "placeholder='uname 입력 :' id='updateUname'/>";
+            $("#uname").html(str);
+            $("#updateBtn").attr("id","updateConfirmBtn");
+        })
+
+        $(document).on('click','#updateConfirmBtn',function (e){
+            $('#form').attr("action","txUpdate");
+            var updateContent= $('#updateContent').val();
+            var updateUname = $('#updateUname').val();
+            form.append("<input type='hidden' name='content' value='"+updateContent+"'/>");
+            form.append("<input type='hidden' name='uname' value='"+updateUname+"'/>");
+            form.append("<input type='hidden' name='_method' value='put'/>");
+            alert(updateContent);
+            alert(updateUname);
+            form.submit();
+        })
+    });
+</script>
+</body>
+</html>

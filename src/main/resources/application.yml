@@ -1,0 +1,25 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: jti
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
+    check-template-location: true
+    mode: LEGACYHTML5
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+#  jmx:
+#    enabled: false
+
+server:
+  port: 6060
+
+db:
+  cache:
+    default-expire-time: 30
+    expires:
+      oList: 60
+      mList: 60
