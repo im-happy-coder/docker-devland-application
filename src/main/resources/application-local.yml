@@ -3,16 +3,16 @@
 spring:
   mysql:
     datasource:
-#      jndi: true
-      jndi: false
+     jndi: true
+#       jndi: false
   oracle:
     datasource:
-#      jndi: true
-      jndi: false
+     jndi: true
+#       jndi: false
   # REDIS
   redis:
     object:
-      host: 192.168.137.93
+      host: your_server_ip
       port: 6379
       database: 0
       pool:
@@ -21,7 +21,7 @@ spring:
         max-active: 8
         max-wait: -1
     session:
-      host: 192.168.137.93
+      host: your_server_ip
       port: 6379
 
 # MYSQL, ORACLE
@@ -30,17 +30,17 @@ ttaeinee:
     mysql:
       config-location: classpath:mybatis/mybatis-config-mysql.xml
       mapper-locations: classpath:mybatis/**/mapper/mysql/*Mapper.sqlx
-      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:mysql://192.168.137.93:3306/javatest
-      username: wasdb
-      password: root
+#       driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#       url: jdbc:log4jdbc:mysql://192.168.137.93:3306/javatest
+#       username: wasdb
+#       password: root
     oracle:
       config-location: classpath:mybatis/mybatis-config-oracle.xml
       mapper-locations: classpath:mybatis/**/mapper/oracle/*Mapper.sqlx
-      driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-      url: jdbc:log4jdbc:oracle:thin:@192.168.137.93:1521:XE
-      username: system
-      password: oracle
+#       driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
+#       url: jdbc:log4jdbc:oracle:thin:@192.168.137.93:1521:XE
+#       username: system
+#       password: oracle
 
 
 
